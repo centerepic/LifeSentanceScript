@@ -47,9 +47,7 @@ local function Count(Name,Model)
     return count
 end
 
-local module = {}
-
-module.GrabItems = function(Springs,Blades,Gears)
+getgenv().GrabItems = function(Springs,Blades,Gears)
     local OP = Character.HumanoidRootPart.CFrame
     local done1,done2,done3 = false,false,false
     if Springs ~= 0 then
@@ -129,5 +127,3 @@ module.GrabItems = function(Springs,Blades,Gears)
     end
     TPTo(OP)
 end
-
-return module
