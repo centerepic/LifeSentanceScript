@@ -53,7 +53,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
     if Springs ~= 0 then
         task.spawn(function()
         repeat 
-            wait(1)
+            wait()
             UpdateLoot()
             local cont = true
             for i,v in pairs(LootT) do
@@ -62,9 +62,8 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                         cont = false
                         local OP = CFrame.new(V3(88, 44, 122))
                         TPTo(v[2].CFrame)
-                        wait(0.5)
+                        wait(0.2)
                         FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                        wait(0.5)
                         TPTo(OP)
                     end
                 end
@@ -78,7 +77,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
     if Springs ~= 0 then
         task.spawn(function()
             repeat 
-                wait(1)
+                wait()
                 UpdateLoot()
                 local cont = true
                 for i,v in pairs(LootT) do
@@ -87,9 +86,8 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                             cont = false
                             local OP = CFrame.new(V3(88, 44, 122))
                             TPTo(v[2].CFrame)
-                            wait(0.5)
+                            wait(0.2)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                            wait(0.5)
                             TPTo(OP)
                         end
                     end
@@ -103,7 +101,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
     if Blades ~= 0 then
         task.spawn(function()
             repeat 
-                wait(1)
+                wait()
                 UpdateLoot()
                 local cont = true
                 for i,v in pairs(LootT) do
@@ -112,9 +110,8 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                             cont = false
                             local OP = CFrame.new(V3(88, 44, 122))
                             TPTo(v[2].CFrame)
-                            wait(0.5)
+                            wait(0.2)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                            wait(0.5)
                             TPTo(OP)
                         end
                     end
