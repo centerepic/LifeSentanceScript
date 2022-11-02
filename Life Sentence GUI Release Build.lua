@@ -25,6 +25,8 @@ end) -- IT IS VILE HOW EASY IT IS
 
 -- Define variables / constants
 
+local httprequest = (syn and syn.request) or (http and http.request) or http_request or (fluxus and fluxus.request) or request
+
 local function GetClosest()
     local Character = LocalPlayer.Character
     local HumanoidRootPart = Character and Character:FindFirstChild("HumanoidRootPart")
@@ -58,8 +60,8 @@ local GunConfigs = require(game:GetService("ReplicatedStorage").GunConfigs)
 
 -- Load in modules
 
-loadstring(syn.request({Url = 'https://raw.githubusercontent.com/centerepic/LifeSentanceScript/main/grabbr.lua',Method = "GET"}).Body)()
-local ESP = loadstring(syn.request({Url = 'https://raw.githubusercontent.com/centerepic/script-host/main/ESP_DistanceCheck.lua',Method = "GET"}).Body)()
+loadstring(httprequest({Url = 'https://raw.githubusercontent.com/centerepic/LifeSentanceScript/main/grabbr.lua?t=1337',Method = "GET"}).Body)()
+local ESP = loadstring(httprequest({Url = 'https://raw.githubusercontent.com/centerepic/script-host/main/ESP_DistanceCheck.lua',Method = "GET"}).Body)()
 local Aiming = loadstring(game:HttpGet("https://raw.githubusercontent.com/centerepic/LifeSentanceScript/main/Aiming_Module.lua"))()
 
 Aiming.TeamCheck(false)
