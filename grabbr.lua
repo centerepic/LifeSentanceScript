@@ -85,7 +85,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                     if v[1] == "Gear" then
                         cont = false
                         TPTo(v[2].CFrame)
-                        wait(0.2)
+                        wait(1)
                         FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
                         TPTo(OP)
                     end
@@ -108,7 +108,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                         if v[1] == "Spring" then
                             cont = false
                             TPTo(v[2].CFrame)
-                            wait(0.2)
+                            wait(1)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
                             TPTo(OP)
                         end
@@ -131,7 +131,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                         if v[1] == "Blade" then
                             cont = false
                             TPTo(v[2].CFrame)
-                            wait(0.2)
+                            wait(1)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
                             TPTo(OP)
                         end
