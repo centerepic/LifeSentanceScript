@@ -9,6 +9,8 @@ local TweenService = game:GetService("TweenService")
 
 local function TPTo(Position)
 
+    print("TPTo called.")
+
     if typeof(Position) == "Instance" then
         Position = Position.CFrame
     end
