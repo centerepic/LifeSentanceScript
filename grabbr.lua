@@ -38,7 +38,7 @@ local function TPTo(Position)
         warn("[!] Invalid Argument Passed to TP()")
     else
         local OP = LocalPlayer.Character.HumanoidRootPart.Position
-        local TTW = (OP - Position.Position).Magnitude / 15
+        local TTW = (OP - Position.Position).Magnitude / 30
     
         if TTW < 2 then
             TP(Position)
