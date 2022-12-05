@@ -88,7 +88,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                 if cont then
                     if v[1] == "Gear" then
                         cont = false
-                        wait(TPTo(v[2].CFrame).Completed)
+                        wait(TPTo(v[2].CFrame))
                         wait(1)
                         FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
                     end
