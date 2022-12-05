@@ -25,15 +25,11 @@ local function TPTo(Position)
         warn("[!] Invalid Argument Passed to TP()")
     else
         local OP = LocalPlayer.Character.HumanoidRootPart.Position
-        local TTW = (OP - Position.Position).Magnitude / 30 + 2
-        local Tween1 = TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(1),{CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0,50,0)})
-        local Tween = TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position - Vector3.new(0,50,0)})
-        Tween1:Play()
-        Tween1.Completed:Wait()
+        local TTW = (OP - Position.Position).Magnitude / 30
+        local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
         Tween:Play()
         Teleporting = true
         Tween.Completed:Connect(function()
-            TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(1,{CFrame = Position}):Play()
             Teleporting = false
         end)
         print("Tween started. | " .. tostring(TTW))
