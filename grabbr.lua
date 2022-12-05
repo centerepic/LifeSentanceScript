@@ -6,24 +6,6 @@ local FPP = fireproximityprompt
 local Loot = {}
 local LootSpawns = game:GetService("Workspace").SpawnsLoot
 
-local function TP(Position)
-
-    if typeof(Position) == "Instance" then
-        Position = Position.CFrame
-    end
-
-    if typeof(Position) == "Vector3" then
-        Position = CFrame.new(Position)
-    end
-    
-    if typeof(Position) == "CFrame" then
-        LocalPlayer.Character:PivotTo(Position)
-    else
-        warn("[!] Invalid Argument Passed to TP()")
-    end
-    
-end
-
 local function TPTo(Position)
 
     if typeof(Position) == "Instance" then
@@ -40,13 +22,9 @@ local function TPTo(Position)
         local OP = LocalPlayer.Character.HumanoidRootPart.Position
         local TTW = (OP - Position.Position).Magnitude / 30
     
-        if TTW < 2 then
-            TP(Position)
-        else
-            local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
-            Tween:Play()
-            Tween.Completed:Wait()
-        end
+        local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
+        Tween:Play()
+        Tween.Completed:Wait()
     end
 end
 
