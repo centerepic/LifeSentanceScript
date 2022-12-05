@@ -24,6 +24,7 @@ local function TPTo(Position)
         local TTW = (OP - Position.Position).Magnitude / 30
         local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
         Tween:Play()
+        print("Tween started. | " .. tostring(TTW))
         Tween.Completed:Wait()
     end
 end
