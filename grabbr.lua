@@ -5,6 +5,7 @@ local V3 = Vector3.new
 local FPP = fireproximityprompt
 local Loot = {}
 local LootSpawns = game:GetService("Workspace").SpawnsLoot
+local TweenService = game:GetService("TweenService")
 
 local function TPTo(Position)
 
@@ -21,7 +22,6 @@ local function TPTo(Position)
     else
         local OP = LocalPlayer.Character.HumanoidRootPart.Position
         local TTW = (OP - Position.Position).Magnitude / 30
-    
         local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
         Tween:Play()
         Tween.Completed:Wait()
