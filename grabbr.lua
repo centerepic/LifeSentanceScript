@@ -27,8 +27,7 @@ local function TPTo(Position)
         local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
         Tween:Play()
         print("Tween started. | " .. tostring(TTW))
-        Tween.Completed:Wait()
-        print("Tween completed.")
+        return Tween
     end
 
 end
@@ -84,10 +83,10 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                 if cont then
                     if v[1] == "Gear" then
                         cont = false
-                        TPTo(v[2].CFrame)
+                        TPTo(v[2].CFrame).Completed:Wait()
                         wait(1)
                         FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                        TPTo(OP)
+                        TPTo(OP).Completed:Wait()
                     end
                 end
             end
@@ -107,10 +106,10 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                     if cont then
                         if v[1] == "Spring" then
                             cont = false
-                            TPTo(v[2].CFrame)
+                            TPTo(v[2].CFrame).Completed:Wait()
                             wait(1)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                            TPTo(OP)
+                            TPTo(OP).Completed:Wait()
                         end
                     end
                 end
@@ -130,10 +129,10 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                     if cont then
                         if v[1] == "Blade" then
                             cont = false
-                            TPTo(v[2].CFrame)
+                            TPTo(v[2].CFrame).Completed:Wait()
                             wait(1)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                            TPTo(OP)
+                            TPTo(OP).Completed:Wait()
                         end
                     end
                 end
@@ -143,5 +142,5 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
         else
             done3 = true
     end
-    TPTo(OP)
+    TPTo(OP).Completed:Wait()
 end
