@@ -5,6 +5,25 @@ local V3 = Vector3.new
 local FPP = fireproximityprompt
 local Loot = {}
 local LootSpawns = game:GetService("Workspace").SpawnsLoot
+
+local function TP(Position)
+
+    if typeof(Position) == "Instance" then
+        Position = Position.CFrame
+    end
+
+    if typeof(Position) == "Vector3" then
+        Position = CFrame.new(Position)
+    end
+    
+    if typeof(Position) == "CFrame" then
+        LocalPlayer.Character:PivotTo(Position)
+    else
+        warn("[!] Invalid Argument Passed to TP()")
+    end
+    
+end
+
 local function TPTo(Position)
 
     if typeof(Position) == "Instance" then
