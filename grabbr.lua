@@ -27,7 +27,7 @@ local function TPTo(Position)
         local OP = LocalPlayer.Character.HumanoidRootPart.Position
         local TTW = (OP - Position.Position).Magnitude / 22
         local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
-        LocalPlayer.Character:PivotTo(LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0,20,0))
+        LocalPlayer.Character:PivotTo(LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0,5,0))
         Tween:Play()
         Teleporting = true
         Tween.Completed:Connect(function()
