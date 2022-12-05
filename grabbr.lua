@@ -80,7 +80,6 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
     local OP = Character.HumanoidRootPart.CFrame
     local done1,done2,done3 = false,false,false
     if Springs ~= 0 then
-        task.spawn(function()
         repeat 
             wait()
             UpdateLoot()
@@ -97,12 +96,10 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
             end
         until Count("Gear",LocalPlayer.Backpack) >= Gears or Gears == 0
         done1 = true
-        end)
     else
         done1 = true
     end
     if Springs ~= 0 then
-        task.spawn(function()
             repeat 
                 wait()
                 UpdateLoot()
@@ -119,12 +116,10 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                 end
             until Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0
             done2 = true
-        end)
         else
             done2 = true
     end
     if Blades ~= 0 then
-        task.spawn(function()
             repeat 
                 wait()
                 UpdateLoot()
@@ -141,7 +136,6 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                 end
             until Count("Blade",LocalPlayer.Backpack) >= Blades or Blades == 0
             done3 = true
-        end)
         else
             done3 = true
     end
