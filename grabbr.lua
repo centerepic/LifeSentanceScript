@@ -28,7 +28,9 @@ local function TPTo(Position)
         Tween:Play()
         print("Tween started. | " .. tostring(TTW))
         Tween.Completed:Wait()
+        print("Tween completed.")
     end
+
 end
 
 local function CheckLoot(Model)
@@ -82,7 +84,6 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                 if cont then
                     if v[1] == "Gear" then
                         cont = false
-                        local OP = CFrame.new(V3(88, 44, 122))
                         TPTo(v[2].CFrame)
                         wait(0.2)
                         FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
@@ -106,7 +107,6 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                     if cont then
                         if v[1] == "Spring" then
                             cont = false
-                            local OP = CFrame.new(V3(88, 44, 122))
                             TPTo(v[2].CFrame)
                             wait(0.2)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
@@ -130,7 +130,6 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                     if cont then
                         if v[1] == "Blade" then
                             cont = false
-                            local OP = CFrame.new(V3(88, 44, 122))
                             TPTo(v[2].CFrame)
                             wait(0.2)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
