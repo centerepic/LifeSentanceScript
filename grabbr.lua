@@ -25,8 +25,9 @@ local function TPTo(Position)
         warn("[!] Invalid Argument Passed to TP()")
     else
         local OP = LocalPlayer.Character.HumanoidRootPart.Position
-        local TTW = (OP - Position.Position).Magnitude / 30
+        local TTW = (OP - Position.Position).Magnitude / 22
         local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
+        LocalPlayer.Character:PivotTo(LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0,20,0))
         Tween:Play()
         Teleporting = true
         Tween.Completed:Connect(function()
