@@ -7,6 +7,8 @@ local Loot = {}
 local LootSpawns = game:GetService("Workspace").SpawnsLoot
 local TweenService = game:GetService("TweenService")
 
+local Teleporting = false
+
 local function TPTo(Position)
 
     print("TPTo called.")
@@ -19,13 +21,17 @@ local function TPTo(Position)
         Position = CFrame.new(Position)
     end
 
-    if typeof(Position) ~= "CFrame" then
+    if typeof(Position) ~= "CFrame" or Teleporting == true then
         warn("[!] Invalid Argument Passed to TP()")
     else
         local OP = LocalPlayer.Character.HumanoidRootPart.Position
         local TTW = (OP - Position.Position).Magnitude / 30
         local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
         Tween:Play()
+        Teleporting = true
+        Tween.Completed:Connect(function()
+            Teleporting = false
+        end)
         print("Tween started. | " .. tostring(TTW))
         return Tween
     end
@@ -86,7 +92,6 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                         TPTo(v[2].CFrame).Completed:Wait()
                         wait(1)
                         FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                        TPTo(OP).Completed:Wait()
                     end
                 end
             end
@@ -109,7 +114,6 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                             TPTo(v[2].CFrame).Completed:Wait()
                             wait(1)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                            TPTo(OP).Completed:Wait()
                         end
                     end
                 end
@@ -132,7 +136,6 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                             TPTo(v[2].CFrame).Completed:Wait()
                             wait(1)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                            TPTo(OP).Completed:Wait()
                         end
                     end
                 end
