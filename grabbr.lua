@@ -33,7 +33,7 @@ local function TPTo(Position)
             Teleporting = false
         end)
         print("Tween started. | " .. tostring(TTW))
-        return Tween
+        return TTW
     end
 
 end
@@ -88,7 +88,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                 if cont then
                     if v[1] == "Gear" then
                         cont = false
-                        TPTo(v[2].CFrame).Completed:Wait()
+                        wait(TPTo(v[2].CFrame).Completed)
                         wait(1)
                         FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
                     end
@@ -108,7 +108,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                     if cont then
                         if v[1] == "Spring" then
                             cont = false
-                            TPTo(v[2].CFrame).Completed:Wait()
+                            wait(TPTo(v[2].CFrame))
                             wait(1)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
                         end
@@ -128,7 +128,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                     if cont then
                         if v[1] == "Blade" then
                             cont = false
-                            TPTo(v[2].CFrame).Completed:Wait()
+                            wait(TPTo(v[2].CFrame))
                             wait(1)
                             FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
                         end
@@ -139,5 +139,5 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
         else
             done3 = true
     end
-    TPTo(OP).Completed:Wait()
+    wait(TPTo(OP))
 end
