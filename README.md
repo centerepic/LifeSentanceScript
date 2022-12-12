@@ -1,4 +1,7 @@
 # LifeSentanceScript
+
+# Patched, reworking and adding to sasware soon.
+
 Repository for hosting all modules/requirements for my Life Sentance GUI,
 Awesome.
 
