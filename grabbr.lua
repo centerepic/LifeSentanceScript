@@ -52,10 +52,9 @@ local function CheckLoot(Model)
     return false,nil
 end
 
-local LootT = {}
 
-local function UpdateLoot()
-    LootT = {}
+local function GetLoot()
+    local LootT = {}
 
     for _,LootSpawn in pairs(LootSpawns:GetChildren()) do
         
@@ -65,6 +64,8 @@ local function UpdateLoot()
         end
         
     end
+
+    return LootT
 end
 
 local function Count(Name,Model)
@@ -82,8 +83,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
     local OP = Character.HumanoidRootPart.CFrame
     repeat
         task.wait(0.5)
-        UpdateLoot()
-        for i,v in pairs(LootT:GetChildren()) do
+        for i,v in pairs(GetLoot()) do
             if v[1] == "Spring" and not (Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0) then
                 task.wait(TPTo(CFrame.new(Vector3.new(OP.Position.X,YLevel,OP.Position.Z))))
 
