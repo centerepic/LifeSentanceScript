@@ -51,7 +51,7 @@ local function TPTo(Position)
         Position = CFrame.new(Position)
     end
 
-    if typeof(Position) ~= "CFrame" or Teleporting == true then
+    if typeof(Position) ~= "CFrame" then
         warn("[!] Invalid Argument Passed to TP()")
     else
         LocalPlayer.Character:PivotTo(Position)
@@ -116,7 +116,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
 
                 task.wait(TPTo(v[2].CFrame))
 
-                wait(0.1)
+                wait(0.7)
 
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
@@ -127,7 +127,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
 
                 task.wait(TPTo(v[2].CFrame))
 
-                wait(0.1)
+                wait(0.7)
 
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
@@ -138,7 +138,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
 
                 task.wait(TPTo(v[2].CFrame))
 
-                wait(0.1)
+                wait(0.7)
 
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
