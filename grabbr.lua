@@ -82,8 +82,11 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
     local YLevel = -54
     local OP = Character.HumanoidRootPart.CFrame
     repeat
-        task.wait(0.5)
-        for i,v in pairs(GetLoot()) do
+        task.wait(1)
+        -- lsep
+        -- lsep2
+        local LootTBL = GetLoot()
+        for _,v in pairs(LootTBL) do
             if v[1] == "Spring" and not (Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0) then
                 task.wait(TPTo(CFrame.new(Vector3.new(OP.Position.X,YLevel,OP.Position.Z))))
 
