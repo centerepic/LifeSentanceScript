@@ -102,7 +102,7 @@ end
 getgenv().GrabItems = function(Springs,Blades,Gears)
     local YLevel = -54
     local OP = Character.HumanoidRootPart.CFrame
-    workspace.Gravity = 0
+    --workspace.Gravity = 0
     repeat
         task.wait(1)
         -- lsep
@@ -148,5 +148,5 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
     
     -- Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0
     wait(TPTo(OP))
-    workspace.Gravity = 196.2
+    --workspace.Gravity = 196.2
 end
