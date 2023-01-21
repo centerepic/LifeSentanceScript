@@ -109,7 +109,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
         -- lsep2
         local LootTBL = GetLoot()
         for _,v in pairs(LootTBL) do
-            if v[1] == "Spring" and not (Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0) then
+            if v[1] == "Spring" and Count("Spring",LocalPlayer.Backpack) < Springs and Springs > 0 then
                 task.wait(TPTo(CFrame.new(Vector3.new(OP.Position.X,YLevel,OP.Position.Z))))
 
                 task.wait(TPTo(CFrame.new(Vector3.new(v[2].Position.X,YLevel,v[2].Position.Z))))
@@ -120,7 +120,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
 
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
-            if v[1] == "Blade" and not (Count("Blade",LocalPlayer.Backpack) >= Blades or Blades == 0) then
+            if v[1] == "Blade" and Count("Blade",LocalPlayer.Backpack) < Blades and Blades > 0 then
                 task.wait(TPTo(CFrame.new(Vector3.new(OP.Position.X,YLevel,OP.Position.Z))))
 
                 task.wait(TPTo(CFrame.new(Vector3.new(v[2].Position.X,YLevel,v[2].Position.Z))))
@@ -131,7 +131,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
 
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
-            if v[1] == "Gear" and not (Count("Gear",LocalPlayer.Backpack) >= Gears or Gears == 0) then
+            if v[1] == "Gear" and Count("Gear",LocalPlayer.Backpack) < Gears and Gears > 0 then
                 task.wait(TPTo(CFrame.new(Vector3.new(OP.Position.X,YLevel,OP.Position.Z))))
 
                 task.wait(TPTo(CFrame.new(Vector3.new(v[2].Position.X,YLevel,v[2].Position.Z))))
@@ -143,6 +143,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
         end
+        TPTo(Vector3.new(145, 30, -162))
         OP = Character.HumanoidRootPart.CFrame
     until Count("Gear",LocalPlayer.Backpack) >= Gears and Count("Blade",LocalPlayer.Backpack) >= Blades and Count("Spring",LocalPlayer.Backpack) >= Springs
     
