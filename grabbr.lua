@@ -49,22 +49,22 @@ local function CheckLoot(Model)
             return "Blade",v
         end
     end
-    return false,v
+    return false,nil
 end
+
+local LootT = {}
 
 local function UpdateLoot()
+    LootT = {}
 
-LootT = {}
-
-for _,LootSpawn in pairs(LootSpawns:GetChildren()) do
-    
-    local Loot,Model = CheckLoot(LootSpawn)
-    if Loot then
-        table.insert(LootT,{Loot,Model})
+    for _,LootSpawn in pairs(LootSpawns:GetChildren()) do
+        
+        local Loot,Model = CheckLoot(LootSpawn)
+        if Loot then
+            table.insert(LootT,{Loot,Model})
+        end
+        
     end
-    
-end
-
 end
 
 local function Count(Name,Model)
@@ -78,67 +78,48 @@ local function Count(Name,Model)
 end
 
 getgenv().GrabItems = function(Springs,Blades,Gears)
+    local YLevel = -54
     local OP = Character.HumanoidRootPart.CFrame
-    local done1,done2,done3 = false,false,false
-    if Springs ~= 0 then
-        repeat 
-            wait()
-            UpdateLoot()
-            local cont = true
-            for i,v in pairs(LootT) do
-                if cont then
-                    if v[1] == "Gear" then
-                        cont = false
-                        wait(TPTo(v[2].CFrame))
-                        wait(1)
-                        FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                    end
-                end
+    repeat
+        task.wait(0.5)
+        UpdateLoot()
+        for i,v in pairs(LootT:GetChildren()) do
+            if v[1] == "Spring" and not (Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0) then
+                task.wait(TPTo(CFrame.new(Vector3.new(OP.Position.X,YLevel,OP.Position.Z))))
+
+                task.wait(TPTo(CFrame.new(Vector3.new(v[2].Position.X,YLevel,v[2].Position.Z))))
+
+                task.wait(TPTo(v[2].CFrame))
+
+                wait(0.5)
+
+                FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
-        until Count("Gear",LocalPlayer.Backpack) >= Gears or Gears == 0
-        done1 = true
-    else
-        done1 = true
-    end
-    if Springs ~= 0 then
-            repeat 
-                wait()
-                UpdateLoot()
-                local cont = true
-                for i,v in pairs(LootT) do
-                    if cont then
-                        if v[1] == "Spring" then
-                            cont = false
-                            wait(TPTo(v[2].CFrame))
-                            wait(1)
-                            FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                        end
-                    end
-                end
-            until Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0
-            done2 = true
-        else
-            done2 = true
-    end
-    if Blades ~= 0 then
-            repeat 
-                wait()
-                UpdateLoot()
-                local cont = true
-                for i,v in pairs(LootT) do
-                    if cont then
-                        if v[1] == "Blade" then
-                            cont = false
-                            wait(TPTo(v[2].CFrame))
-                            wait(1)
-                            FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
-                        end
-                    end
-                end
-            until Count("Blade",LocalPlayer.Backpack) >= Blades or Blades == 0
-            done3 = true
-        else
-            done3 = true
-    end
+            if v[1] == "Blade" and not (Count("Blade",LocalPlayer.Backpack) >= Blades or Blades == 0) then
+                task.wait(TPTo(CFrame.new(Vector3.new(OP.Position.X,YLevel,OP.Position.Z))))
+
+                task.wait(TPTo(CFrame.new(Vector3.new(v[2].Position.X,YLevel,v[2].Position.Z))))
+
+                task.wait(TPTo(v[2].CFrame))
+
+                wait(0.5)
+
+                FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
+            end
+            if v[1] == "Gear" and not (Count("Gear",LocalPlayer.Backpack) >= Gears or Gears == 0) then
+                task.wait(TPTo(CFrame.new(Vector3.new(OP.Position.X,YLevel,OP.Position.Z))))
+
+                task.wait(TPTo(CFrame.new(Vector3.new(v[2].Position.X,YLevel,v[2].Position.Z))))
+
+                task.wait(TPTo(v[2].CFrame))
+
+                wait(0.5)
+
+                FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
+            end
+        end
+    until Count("Gear",LocalPlayer.Backpack) >= Gears and Count("Blade",LocalPlayer.Backpack) >= Blades and Count("Spring",LocalPlayer.Backpack) >= Springs
+    
+    -- Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0
     wait(TPTo(OP))
 end
