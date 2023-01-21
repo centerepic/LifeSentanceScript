@@ -81,7 +81,9 @@ end
 getgenv().GrabItems = function(Springs,Blades,Gears)
     local YLevel = -54
     local OP = Character.HumanoidRootPart.CFrame
+    workspace.Gravity = 0
     repeat
+        OP = Character.HumanoidRootPart.CFrame
         task.wait(1)
         -- lsep
         -- lsep2
@@ -94,7 +96,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
 
                 task.wait(TPTo(v[2].CFrame))
 
-                wait(0.5)
+                wait(0.1)
 
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
@@ -105,7 +107,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
 
                 task.wait(TPTo(v[2].CFrame))
 
-                wait(0.5)
+                wait(0.1)
 
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
@@ -116,7 +118,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
 
                 task.wait(TPTo(v[2].CFrame))
 
-                wait(0.5)
+                wait(0.1)
 
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
@@ -125,4 +127,5 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
     
     -- Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0
     wait(TPTo(OP))
+    workspace.Gravity = 196.2
 end
