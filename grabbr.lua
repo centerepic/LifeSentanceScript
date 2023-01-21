@@ -9,6 +9,36 @@ local TweenService = game:GetService("TweenService")
 
 local Teleporting = false
 
+-- local function TPTo(Position)
+
+--     print("TPTo called.")
+
+--     if typeof(Position) == "Instance" then
+--         Position = Position.CFrame
+--     end
+
+--     if typeof(Position) == "Vector3" then
+--         Position = CFrame.new(Position)
+--     end
+
+--     if typeof(Position) ~= "CFrame" or Teleporting == true then
+--         warn("[!] Invalid Argument Passed to TP()")
+--     else
+--         local OP = LocalPlayer.Character.HumanoidRootPart.Position
+--         local TTW = (OP - Position.Position).Magnitude / 22
+--         local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
+--         LocalPlayer.Character:PivotTo(LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0,5,0))
+--         Tween:Play()
+--         Teleporting = true
+--         Tween.Completed:Connect(function()
+--             Teleporting = false
+--         end)
+--         print("Tween started. | " .. tostring(TTW))
+--         return TTW
+--     end
+
+-- end
+
 local function TPTo(Position)
 
     print("TPTo called.")
@@ -24,17 +54,8 @@ local function TPTo(Position)
     if typeof(Position) ~= "CFrame" or Teleporting == true then
         warn("[!] Invalid Argument Passed to TP()")
     else
-        local OP = LocalPlayer.Character.HumanoidRootPart.Position
-        local TTW = (OP - Position.Position).Magnitude / 22
-        local Tween =  TweenService:Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TTW),{CFrame = Position})
-        LocalPlayer.Character:PivotTo(LocalPlayer.Character.HumanoidRootPart.CFrame - Vector3.new(0,5,0))
-        Tween:Play()
-        Teleporting = true
-        Tween.Completed:Connect(function()
-            Teleporting = false
-        end)
-        print("Tween started. | " .. tostring(TTW))
-        return TTW
+        LocalPlayer.Character:PivotTo(Position)
+       return 0
     end
 
 end
@@ -83,7 +104,6 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
     local OP = Character.HumanoidRootPart.CFrame
     workspace.Gravity = 0
     repeat
-        OP = Character.HumanoidRootPart.CFrame
         task.wait(1)
         -- lsep
         -- lsep2
@@ -123,6 +143,7 @@ getgenv().GrabItems = function(Springs,Blades,Gears)
                 FPP(v[2].Parent.Part.Attachment.ProximityPrompt,1)
             end
         end
+        OP = Character.HumanoidRootPart.CFrame
     until Count("Gear",LocalPlayer.Backpack) >= Gears and Count("Blade",LocalPlayer.Backpack) >= Blades and Count("Spring",LocalPlayer.Backpack) >= Springs
     
     -- Count("Spring",LocalPlayer.Backpack) >= Springs or Springs == 0
